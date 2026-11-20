@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TaskTimpla | Study Smarter</title>
+<style>
+:root{--bg:#f4f6f2;--ink:#17251f;--muted:#65736b;--green:#246b52;--green2:#dceee5;--lime:#d9f26a;--card:#fff;--line:#e4e9e3;--orange:#f5a65b;--shadow:0 16px 45px rgba(25,55,40,.08)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{max-width:1100px;margin:auto;padding:28px 22px 50px}.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}.brand{display:flex;gap:12px;align-items:center;font-weight:800;font-size:20px;letter-spacing:-.5px}.logo{width:42px;height:42px;border-radius:14px;background:var(--green);color:#fff;display:grid;place-items:center;font-size:23px}.topnote{font-size:13px;color:var(--muted)}
+.hero{background:var(--green);border-radius:26px;padding:34px 36px;color:white;position:relative;overflow:hidden;box-shadow:var(--shadow);margin-bottom:22px}.hero:after{content:"";position:absolute;width:240px;height:240px;border-radius:50%;background:rgba(217,242,106,.12);right:-80px;top:-90px}.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.04;letter-spacing:-1.5px;margin:0 0 12px;max-width:600px}.hero p{color:#d8e8df;max-width:580px;margin:0;line-height:1.55}.hero .pill{display:inline-block;background:var(--lime);color:#243d30;padding:7px 12px;border-radius:30px;font-size:12px;font-weight:800;margin-bottom:17px}
+.grid{display:grid;grid-template-columns:1.02fr .98fr;gap:22px}.panel{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:var(--shadow)}.panel h2{margin:0;font-size:20px;letter-spacing:-.4px}.sub{color:var(--muted);font-size:13px;margin:7px 0 20px;line-height:1.5}
+label{font-size:13px;font-weight:700;display:block;margin:0 0 7px}.field{margin-bottom:14px}input,select{width:100%;padding:12px 13px;border:1px solid var(--line);background:#fbfcfa;border-radius:12px;font:inherit;color:var(--ink);outline:none}input:focus,select:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(36,107,82,.1)}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.btn{border:0;border-radius:13px;padding:13px 16px;font-weight:800;font:inherit;cursor:pointer;transition:.15s}.btn:hover{transform:translateY(-1px)}.primary{background:var(--green);color:white;width:100%}.secondary{background:var(--green2);color:var(--green)}.delete{background:#fff0ed;color:#a64232;padding:8px 10px;font-size:12px}.add{display:flex;gap:10px;align-items:center;margin:4px 0 18px}.add .btn{white-space:nowrap}.tasklist{display:grid;gap:10px;margin-bottom:16px}.taskitem{border:1px solid var(--line);border-radius:14px;padding:13px;display:flex;justify-content:space-between;align-items:center;gap:10px}.taskitem strong{display:block;font-size:14px}.taskmeta{font-size:12px;color:var(--muted);margin-top:4px}.empty{border:1px dashed #cdd8d0;padding:24px;border-radius:14px;text-align:center;color:var(--muted);font-size:13px}
+.timebox{background:#f5f8f4;border-radius:15px;padding:15px;margin:16px 0}.timebox .row{align-items:end}.results{min-height:250px}.emptyresult{min-height:210px;display:grid;place-items:center;text-align:center;color:var(--muted);padding:20px}.emptyresult .big{font-size:38px;margin-bottom:10px}.progresswrap{background:#edf1ed;border-radius:50px;height:10px;overflow:hidden;margin:14px 0 8px}.progressbar{height:100%;width:0;background:var(--green);border-radius:50px;transition:width .3s}.progressline{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}.planlist{display:grid;gap:10px;margin-top:18px}.planitem{display:grid;grid-template-columns:25px 1fr auto;gap:12px;align-items:start;border:1px solid var(--line);border-radius:15px;padding:14px}.planitem.done{background:#f5f8f5;opacity:.7}.planitem.done .taskname{text-decoration:line-through}.check{width:20px;height:20px;accent-color:var(--green);cursor:pointer;margin-top:2px}.taskname{font-weight:800;font-size:14px}.taskdesc{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5}.duration{background:var(--green2);color:var(--green);padding:6px 9px;border-radius:20px;font-size:12px;font-weight:800;white-space:nowrap}.priority{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--green);margin-bottom:5px}.tip{background:#fff7e8;border:1px solid #f5e5c9;color:#76522c;padding:14px;border-radius:14px;font-size:13px;line-height:1.5;margin-top:16px}.footer{margin-top:24px;text-align:center;color:var(--muted);font-size:12px}
+@media(max-width:800px){.grid{grid-template-columns:1fr}.hero{padding:27px}.topnote{display:none}}@media(max-width:460px){.wrap{padding:18px 14px 35px}.panel{padding:18px}.row{grid-template-columns:1fr}.planitem{grid-template-columns:25px 1fr}.duration{grid-column:2;justify-self:start}.add{align-items:stretch;flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top"><div class="brand"><div class="logo">✦</div>TaskTimpla</div><div class="topnote">A smarter way to plan your study time</div></header>
+<section class="hero"><span class="pill">STUDENT PLANNER · PROTOTYPE</span><h1>Less overwhelm.<br>More progress.</h1><p>Turn your deadlines, task difficulty, and available time into a study plan you can actually follow. Start with what's important, not just what's next.</p></section>
+<div class="grid">
+<section class="panel">
+<h2>Build your task list</h2><p class="sub">Add each school task and its details. TaskTimpla will help arrange your priorities.</p>
+<div class="field"><label for="taskname">Task or assignment</label><input id="taskname" placeholder="e.g., Chemistry problem set"></div>
+<div class="row"><div class="field"><label for="deadline">Due date</label><input id="deadline" type="date"></div><div class="field"><label for="difficulty">Difficulty</label><select id="difficulty"><option value="1">Easy</option><option value="2" selected>Moderate</option><option value="3">Hard</option></select></div></div>
+<div class="field"><label for="duration">Estimated work time (minutes)</label><input id="duration" type="number" min="5" max="600" step="5" value="30"></div>
+<div class="add"><button class="btn secondary" id="addbtn">＋ Add task</button><button class="btn secondary" id="samplebtn">Load sample tasks</button></div>
+<div id="tasklist" class="tasklist"></div>
+<div class="timebox"><div class="row"><div><label for="available">Study time available today (minutes)</label><input id="available" type="number" min="10" step="5" value="120"></div><div><button class="btn primary" id="generate" style="margin-bottom:14px">Create my study plan</button></div></div></div>
+<button class="btn secondary" id="clear" style="width:100%">Clear all tasks</button>
+</section>
+<section class="panel results"><h2>Your study plan</h2><p class="sub">Your recommended order and time allocation will appear here.</p>
+<div id="output"><div class="emptyresult"><div><div class="big">◷</div><strong>Your plan is waiting</strong><p>Add tasks, set your available time, and generate a plan.</p></div></div></div>
+</section>
+</div>
+<div class="footer">TaskTimpla · Organize your workload, one task at a time.</div>
+</div>
+<script>
+let tasks=[],plan=[],checked=new Set();
+const $=id=>document.getElementById(id);
+function todayISO(){let d=new Date();d.setMinutes(d.getMinutes()-d.getTimezoneOffset());return d.toISOString().slice(0,10)}
+$("deadline").value=todayISO();
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function renderTasks(){
+ const box=$("tasklist");
+ if(!tasks.length){box.innerHTML='<div class="empty">No tasks added yet. Add one above or load sample tasks to try the planner.</div>';return}
+ box.innerHTML=tasks.map((t,i)=>`<div class="taskitem"><div><strong>${esc(t.name)}</strong><div class="taskmeta">${esc(t.deadline)} · ${t.difficulty===3?"Hard":t.difficulty===2?"Moderate":"Easy"} · ${t.minutes} min</div></div><button class="btn delete" data-del="${i}">Remove</button></div>`).join("");
+ box.querySelectorAll("[data-del]").forEach(b=>b.onclick=()=>{tasks.splice(+b.dataset.del,1);plan=[];checked.clear();renderTasks();renderEmpty()});
+}
+function renderEmpty(){ $("output").innerHTML='<div class="emptyresult"><div><div class="big">◷</div><strong>Your plan is waiting</strong><p>Add tasks, set your available time, and generate a plan.</p></div></div>'; }
+$("addbtn").onclick=()=>{
+ const name=$("taskname").value.trim(), deadline=$("deadline").value, difficulty=+$("difficulty").value, minutes=+$("duration").value;
+ if(!name){$("taskname").focus();return}if(!deadline){alert("Please select a due date.");return}if(!minutes||minutes<5){alert("Estimated time must be at least 5 minutes.");return}
+ tasks.push({name,deadline,difficulty,minutes});$("taskname").value="";renderTasks();plan=[];checked.clear();renderEmpty();
+};
+$("taskname").addEventListener("keydown",e=>{if(e.key==="Enter")$("addbtn").click()});
+$("samplebtn").onclick=()=>{let today=new Date(),d=(n)=>{let x=new Date(today);x.setDate(x.getDate()+n);x.setMinutes(x.getMinutes()-x.getTimezoneOffset());return x.toISOString().slice(0,10)};tasks=[{name:"Chemistry problem set",deadline:d(1),difficulty:3,minutes:60},{name:"Essay outline",deadline:d(3),difficulty:3,minutes:45},{name:"Reflection paper",deadline:d(5),difficulty:1,minutes:20},{name:"Review lecture notes",deadline:d(2),difficulty:2,minutes:30}];$("available").value=120;renderTasks();plan=[];checked.clear();renderEmpty()};
+$("clear").onclick=()=>{tasks=[];plan=[];checked.clear();renderTasks();renderEmpty()};
+function score(t){let due=new Date(t.deadline+"T23:59:59"),now=new Date();let days=Math.max(0,Math.ceil((due-now)/(86400000)));let urgency=days===0?5:days===1?4:days<=3?3:days<=7?2:1;return urgency*2+t.difficulty*1.5}
+function generate(){
+ if(!tasks.length){alert("Add at least one task first.");return}
+ let available=+$("available").value;if(!available||available<10){alert("Please enter at least 10 minutes of available study time.");return}
+ let sorted=[...tasks].sort((a,b)=>score(b)-score(a));
+ // Use estimated durations if possible; if the total exceeds available, scale allocations proportionally, preserving minimum practical blocks.
+ let total=sorted.reduce((s,t)=>s+t.minutes,0);
+ let allocations;
+ if(total<=available)allocations=sorted.map(t=>t.minutes);
+ else {
+   allocations=sorted.map(t=>Math.max(10,Math.round(t.minutes*(available/total/5))*5));
+   while(allocations.reduce((a,b)=>a+b,0)>available){let idx=allocations.findIndex((v,i)=>v>10&&sorted[i].difficulty<3);if(idx<0)idx=allocations.findIndex(v=>v>10);if(idx<0)break;allocations[idx]-=5}
+   while(allocations.reduce((a,b)=>a+b,0)+5<=available){let idx=sorted.findIndex((t,i)=>allocations[i]<t.minutes);if(idx<0)break;allocations[idx]+=5}
+ }
+ plan=sorted.map((t,i)=>({...t,allocated:allocations[i]}));checked.clear();renderPlan();
+}
+$("generate").onclick=generate;
+function renderPlan(){
+ let done=plan.filter((_,i)=>checked.has(i)).length,pct=plan.length?Math.round(done/plan.length*100):0;
+ $("output").innerHTML=`<div class="progressline"><span>${done} of ${plan.length} tasks completed</span><strong>${pct}%</strong></div><div class="progresswrap"><div class="progressbar" style="width:${pct}%"></div></div><div class="planlist">${plan.map((t,i)=>`<div class="planitem ${checked.has(i)?"done":""}"><input class="check" type="checkbox" data-check="${i}" ${checked.has(i)?"checked":""}><div><div class="priority">Priority ${i+1}</div><div class="taskname">${esc(t.name)}</div><div class="taskdesc">Due ${esc(t.deadline)} · ${t.difficulty===3?"Hard":t.difficulty===2?"Moderate":"Easy"}<br>${esc(t.minutes)} min estimated · ${t.allocated} min planned</div></div><span class="duration">${t.allocated} min</span></div>`).join("")}</div><div class="tip">${plan.every((_,i)=>checked.has(i))?"🎉 Great work! You completed your planned tasks.":"Tip: Start with your top priority. If a task takes longer than expected, adjust the remaining plan instead of giving up."}</div>`;
+ $("output").querySelectorAll("[data-check]").forEach(c=>c.onchange=()=>{if(c.checked)checked.add(+c.dataset.check);else checked.delete(+c.dataset.check);renderPlan()});
+}
+renderTasks();
+</script>
+</body>
+</html>
